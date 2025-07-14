@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  keywords: ["saas starter kit"],
+  keywords: ["comics reader"],
   publisher: team.founder.name,
   creator: team.founder.name,
 };

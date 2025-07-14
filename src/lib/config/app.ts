@@ -1,7 +1,7 @@
 import { env } from "../env";
 
 export const app = {
-  name: "SAAS Starter Kit",
+  name: "Comics Reader",
   logo: "/",
   locale: "en-US",
   publicUrl: env.NEXT_PUBLIC_BASE_URL,

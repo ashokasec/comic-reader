@@ -1,7 +1,7 @@
 import { app, team } from "./app";
 
 export const seo = {
-  title: `${app.name} - SAAS Starter Kit`,
+  title: `${app.name}`,
   description: `${app.name} is a flexible, production-ready starter kit designed for developers to quickly set up SAAS applications without the need for backend configuration or databases.`,
 };
 
