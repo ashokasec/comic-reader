@@ -33,9 +33,14 @@ const ComicReader = ({
 
   if (settings.readingMode === "vertical") {
     return (
-      <div className="flex flex-col items-center w-full">
+      <div
+        className={`flex flex-col items-center w-full p-2 ${settings.readingMode === "vertical" && settings.verticalMargin ? "space-y-2" : ""}`}
+      >
         {images.map((src, index) => (
-          <div key={src} className="relative">
+          <div
+            key={src}
+            className={`relative ${settings.pageSize === "fullHeight" ? "h-[calc(100vh_-_1rem)]" : ""} ${settings.pageSize === "fullWidth" ? "w-full" : ""}`}
+          >
             {settings.ambientGlow.enabled && (
               <img
                 src={src}
@@ -43,13 +48,13 @@ const ComicReader = ({
                   opacity: (settings.ambientGlow.opacity?.[0] ?? 50) / 100,
                 }}
                 alt={`Comic page ${index + 1}`}
-                className="w-full max-w-3xl absolute inset-0 blur-[10rem] brightness-105 saturate-200"
+                className={`absolute inset-0 blur-[10rem] brightness-105 saturate-200 ${settings.pageSize === "fullHeight" ? "h-[calc(100vh_-_2rem)]" : ""} ${settings.pageSize === "fullWidth" ? "w-full" : ""}`}
               />
             )}
             <img
               src={src}
               alt={`Comic page ${index + 1}`}
-              className="w-full max-w-3xl relative"
+              className={`relative ${settings.pageSize === "fullHeight" ? "h-[calc(100vh_-_1rem)]" : ""} ${settings.pageSize === "fullWidth" ? "w-full" : ""}`}
             />
           </div>
         ))}

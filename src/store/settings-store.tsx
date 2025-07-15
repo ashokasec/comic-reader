@@ -1,15 +1,15 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-type ReadingMode = "vertical" | "ltr" | "double-page";
-
 type ReaderSettingsType = {
-  readingMode: ReadingMode;
+  readingMode: "vertical" | "ltr" | "double-page";
+  verticalMargin: boolean;
   backgroundColor: string;
   ambientGlow: {
     enabled?: boolean;
     opacity?: number[];
   };
+  pageSize: "fullWidth" | "fullHeight";
 };
 
 type ReaderSettingsStore = {
@@ -22,11 +22,13 @@ export const useReaderSettingStore = create<ReaderSettingsStore>()(
     (set) => ({
       settings: {
         readingMode: "vertical",
+        verticalMargin: false,
         backgroundColor: "#ffffff",
         ambientGlow: {
           enabled: false,
           opacity: [50],
         },
+        pageSize: "fullHeight",
       },
       setSettings: (newSettings) =>
         set((state) => ({

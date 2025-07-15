@@ -3,6 +3,7 @@
 import { useReaderSettingStore } from "@/store/settings-store";
 import { BookOpen, Columns2, GalleryVertical } from "lucide-react";
 import { Button } from "../ui/button";
+import { Switch } from "../ui/switch";
 import SettingsSection from "./settings-ui";
 
 const DisplaySection = () => {
@@ -63,6 +64,16 @@ const DisplaySection = () => {
             </div>
           );
         })}
+        <div
+          className={`bg-neutral-100 border rounded-md leading-none py-2 px-2.5 flex justify-between col-span-full ${settings.readingMode === "vertical" ? "" : "opacity-50 cursor-not-allowed select-none"}`}
+        >
+          <p className="text-sm">Margin to Separate Pages</p>
+          <Switch
+            disabled={settings.readingMode !== "vertical"}
+            checked={settings.verticalMargin}
+            onCheckedChange={(value) => setSettings({ verticalMargin: value })}
+          />
+        </div>
       </div>
     </SettingsSection>
   );

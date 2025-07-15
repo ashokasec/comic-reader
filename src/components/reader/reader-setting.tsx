@@ -13,6 +13,7 @@ import { Button } from "../ui/button";
 import ImageAmbient from "./section-ambient";
 import BackgroundSection from "./section-background";
 import DislpaySection from "./section-display";
+import WidthSection from "./section-width";
 
 const ReaderSettings = () => {
   return (
@@ -41,6 +42,9 @@ const ReaderSettings = () => {
 
             {/* Image Ambient */}
             <ImageAmbient />
+
+            {/* Width Section */}
+            <WidthSection />
           </div>
         </div>
       </SheetContent>

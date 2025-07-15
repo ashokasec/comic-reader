@@ -1,7 +1,6 @@
 "use client";
 
 import { useReaderSettingStore } from "@/store/settings-store";
-import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Slider } from "../ui/slider";
 import { Switch } from "../ui/switch";
