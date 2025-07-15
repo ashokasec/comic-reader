@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "../ui/button";
 import { BookOpen, Columns2, GalleryVertical } from "lucide-react";
 import SettingsSection from "./settings-ui";
+import { useReaderSettingStore } from "@/store/settings-store";
 
 const DisplaySection = () => {
-  const [selectedLayout, setSelectedLayout] = useState("vertical");
+  const { settings, setSettings } = useReaderSettingStore();
 
   const layouts = [
     {
@@ -16,13 +16,13 @@ const DisplaySection = () => {
       description: "Scroll vertically",
     },
     {
-      id: "horizontal",
+      id: "ltr",
       icon: BookOpen,
       label: "Left to Right",
       description: "Page by page",
     },
     {
-      id: "double",
+      id: "double-page",
       icon: Columns2,
       label: "Double Page",
       description: "Two pages side by side",
@@ -34,7 +34,7 @@ const DisplaySection = () => {
       <div className="grid grid-cols-3 gap-3">
         {layouts.map((layout) => {
           const Icon = layout.icon;
-          const isSelected = selectedLayout === layout.id;
+          const isSelected = settings.readingMode === layout.id;
 
           return (
             <div key={layout.id} className="flex flex-col">
@@ -46,7 +46,14 @@ const DisplaySection = () => {
                     ? "bg-blue-600 hover:bg-blue-700 text-white"
                     : "hover:bg-gray-50"
                 }`}
-                onClick={() => setSelectedLayout(layout.id)}
+                onClick={() =>
+                  setSettings({
+                    readingMode: layout.id as
+                      | "vertical"
+                      | "ltr"
+                      | "double-page",
+                  })
+                }
               >
                 <Icon className="!size-6 flex-shrink-0" strokeWidth={1.5} />
               </Button>
