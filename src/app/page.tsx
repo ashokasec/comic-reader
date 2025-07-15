@@ -1,24 +1,35 @@
-import ComicFileUploader from "@/components/comic-upload";
+"use client";
+
 import Reader from "@/components/comic-reader";
+import ComicFileUploader from "@/components/comic-upload";
 import MiniPreviews from "@/components/reader/mini-previews";
 import ReaderSettings from "@/components/reader/reader-setting";
+import { useReaderSettingStore } from "@/store/settings-store";
 import React from "react";
 
+const COMIC_IMAGE =
+  "https://i.pinimg.com/736x/0e/92/20/0e9220b511058c66e9295309d00d2116.jpg";
+
 const images = [
-  "https://images.unsplash.com/photo-1581345331960-d1b0a223ef96?q=80&w=909&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D#1",
-  "https://images.unsplash.com/photo-1581345331960-d1b0a223ef96?q=80&w=909&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D#2",
-  "https://images.unsplash.com/photo-1581345331960-d1b0a223ef96?q=80&w=909&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D#3",
-  "https://images.unsplash.com/photo-1581345331960-d1b0a223ef96?q=80&w=909&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D#4",
-  "https://images.unsplash.com/photo-1581345331960-d1b0a223ef96?q=80&w=909&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D#6",
-  "https://images.unsplash.com/photo-1581345331960-d1b0a223ef96?q=80&w=909&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D#7",
-  "https://images.unsplash.com/photo-1581345331960-d1b0a223ef96?q=80&w=909&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D#8",
-  "https://images.unsplash.com/photo-1581345331960-d1b0a223ef96?q=80&w=909&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D#9",
-  "https://images.unsplash.com/photo-1581345331960-d1b0a223ef96?q=80&w=909&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D#10",
+  `${COMIC_IMAGE}#1`,
+  `${COMIC_IMAGE}#2`,
+  `${COMIC_IMAGE}#3`,
+  `${COMIC_IMAGE}#4`,
+  `${COMIC_IMAGE}#6`,
+  `${COMIC_IMAGE}#7`,
+  `${COMIC_IMAGE}#8`,
+  `${COMIC_IMAGE}#9`,
+  `${COMIC_IMAGE}#10`,
 ];
 
 const page = () => {
+  const { settings } = useReaderSettingStore();
+
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div
+      className="min-h-screen flex items-center justify-center transition-all"
+      style={{ background: settings.backgroundColor }}
+    >
       {/* <div className="max-w-2xl mx-auto relative bottom-8">
         <ComicFileUploader />
       </div> */}

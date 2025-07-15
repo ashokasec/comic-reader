@@ -1,7 +1,7 @@
 "use client";
 
-import { AlertCircleIcon, FileUpIcon, XIcon } from "lucide-react";
 import { useFileUpload } from "@/hooks/use-file-upload";
+import { AlertCircleIcon, FileUpIcon, XIcon } from "lucide-react";
 
 export default function ComicFileUploader() {
   const maxSizeMB = 50;

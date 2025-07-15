@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "../ui/button";
-import { BookOpen, Columns2, GalleryVertical } from "lucide-react";
-import SettingsSection from "./settings-ui";
 import { useReaderSettingStore } from "@/store/settings-store";
+import { BookOpen, Columns2, GalleryVertical } from "lucide-react";
+import { Button } from "../ui/button";
+import SettingsSection from "./settings-ui";
 
 const DisplaySection = () => {
   const { settings, setSettings } = useReaderSettingStore();
@@ -57,7 +57,7 @@ const DisplaySection = () => {
               >
                 <Icon className="!size-6 flex-shrink-0" strokeWidth={1.5} />
               </Button>
-              <div className="font-medium text-sm pl-0.5 mt-1 text-center">
+              <div className="font-medium text-[13px] pl-0.5 mt-1 text-center">
                 {layout.label}
               </div>
             </div>

@@ -1,14 +1,14 @@
 "use client";
 
-import React from "react";
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   type CarouselApi,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
 import { useReaderSettingStore } from "@/store/settings-store";
+import React from "react";
 
 const ComicReader = ({
   images,
@@ -35,12 +35,23 @@ const ComicReader = ({
     return (
       <div className="flex flex-col items-center w-full">
         {images.map((src, index) => (
-          <img
-            key={src}
-            src={src}
-            alt={`Comic page ${index + 1}`}
-            className="w-full max-w-4xl"
-          />
+          <div key={src} className="relative">
+            {settings.ambientGlow.enabled && (
+              <img
+                src={src}
+                style={{
+                  opacity: (settings.ambientGlow.opacity?.[0] ?? 50) / 100,
+                }}
+                alt={`Comic page ${index + 1}`}
+                className="w-full max-w-3xl absolute inset-0 blur-[10rem] brightness-105 saturate-200"
+              />
+            )}
+            <img
+              src={src}
+              alt={`Comic page ${index + 1}`}
+              className="w-full max-w-3xl relative"
+            />
+          </div>
         ))}
       </div>
     );
@@ -57,7 +68,7 @@ const ComicReader = ({
       : images.map((img) => [img]);
 
   return (
-    <div className="min-h-screen max-h-screen overflow-hidden flex items-center justify-center gap-4">
+    <div className="min-h-screen max-h-screen flex items-center justify-center gap-4">
       <Button onClick={handlePrev} disabled={!api?.canScrollPrev?.()}>
         Previous
       </Button>
@@ -75,6 +86,17 @@ const ComicReader = ({
             >
               {group.map((src) => (
                 <div key={src}>
+                  {settings.ambientGlow.enabled && (
+                    <img
+                      src={src}
+                      alt={`Page ${src}`}
+                      style={{
+                        opacity:
+                          (settings.ambientGlow.opacity?.[0] ?? 50) / 100,
+                      }}
+                      className="h-[calc(100vh-2rem)] object-contain aspect-[20/31] absolute blur-3xl -z-10 opacity-50"
+                    />
+                  )}
                   <img
                     src={src}
                     alt={`Page ${src}`}

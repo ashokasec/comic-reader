@@ -62,8 +62,8 @@ export const useFileUpload = (
   options: FileUploadOptions = {},
 ): [FileUploadState, FileUploadActions] => {
   const {
-    maxFiles = Infinity,
-    maxSize = Infinity,
+    maxFiles = Number.POSITIVE_INFINITY,
+    maxSize = Number.POSITIVE_INFINITY,
     accept = "*",
     multiple = false,
     initialFiles = [],
@@ -184,7 +184,7 @@ export const useFileUpload = (
       // Check if adding these files would exceed maxFiles (only in multiple mode)
       if (
         multiple &&
-        maxFiles !== Infinity &&
+        maxFiles !== Number.POSITIVE_INFINITY &&
         state.files.length + newFilesArray.length > maxFiles
       ) {
         errors.push(`You can only upload a maximum of ${maxFiles} files.`);

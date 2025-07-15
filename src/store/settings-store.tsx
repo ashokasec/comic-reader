@@ -5,6 +5,11 @@ type ReadingMode = "vertical" | "ltr" | "double-page";
 
 type ReaderSettingsType = {
   readingMode: ReadingMode;
+  backgroundColor: string;
+  ambientGlow: {
+    enabled?: boolean;
+    opacity?: number[];
+  };
 };
 
 type ReaderSettingsStore = {
@@ -17,6 +22,11 @@ export const useReaderSettingStore = create<ReaderSettingsStore>()(
     (set) => ({
       settings: {
         readingMode: "vertical",
+        backgroundColor: "#ffffff",
+        ambientGlow: {
+          enabled: false,
+          opacity: [50],
+        },
       },
       setSettings: (newSettings) =>
         set((state) => ({

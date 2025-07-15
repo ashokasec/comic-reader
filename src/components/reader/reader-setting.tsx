@@ -9,8 +9,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Settings } from "lucide-react";
-import DislpaySection from "./section-display";
 import { Button } from "../ui/button";
+import ImageAmbient from "./section-ambient";
+import BackgroundSection from "./section-background";
+import DislpaySection from "./section-display";
 
 const ReaderSettings = () => {
   return (
@@ -33,6 +35,12 @@ const ReaderSettings = () => {
           <div className="space-y-6">
             {/* Display & Layout */}
             <DislpaySection />
+
+            {/* Background */}
+            <BackgroundSection />
+
+            {/* Image Ambient */}
+            <ImageAmbient />
           </div>
         </div>
       </SheetContent>
